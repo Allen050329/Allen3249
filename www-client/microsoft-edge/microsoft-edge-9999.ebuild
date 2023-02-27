@@ -67,7 +67,7 @@ QA_PREBUILT="*"
 QA_DESKTOP_FILE="usr/share/applications/microsoft-edge.*\\.desktop"
 S=${WORKDIR}
 EDGE_HOME="opt/microsoft/msedge${PN#microsoft-edge}"
-
+PROPERTIES+=" live"
 pkg_nofetch() {
 	eerror "Please wait 24 hours and sync your tree before reporting a bug for microsoft-edge fetch failures."
 }

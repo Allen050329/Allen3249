@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 BDEPEND=">=dev-java/gradle-bin-7.3:*"
 
 S="${WORKDIR}/ghidra-Ghidra_${PV}_build"
-
+PROPERTIES+=" live"
 pkg_setup() {
 	java-pkg-2_pkg_setup
 	# somehow this was unset on livecd run and it shouldn't be unset
@@ -75,7 +75,7 @@ src_install() {
 	#FIXME: it is easier to unpack existing archive for now
 	dodir /usr/share
 	unzip "build/dist/ghidra_*_DEV_*_linux_x86_64.zip" -d "${ED}"/usr/share/ghidra-container || die "unable to unpack dist zip"
-	rm -rf /usr/share/ghidra/Extensions
+	rm -rf "${ED}"/usr/share/ghidra/Extensions
 	mv "${ED}"/usr/share/ghidra-container/* "${ED}"/usr/share/ghidra
 	rm -rf "${ED}"/usr/share/ghidra-container
 

@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/Allen050329/update-for-gentoo.git"
 RDEPEND="sys-apps/portage
         app-shells/bash"
 DEPEND="${RDEPEND}"
-
+PROPERTIES+=" live"
 src_unpack() {
         git clone ${EGIT_REPO_URI} ${P}
 }

@@ -17,6 +17,6 @@ KEYWORDS="~amd64"
 
 
 src_install() {
-	into /
-	cp -a  "${S}/" "${D}/" || die "Install failed!"
+	insinto /usr/
+	doins -r /usr/* || die "Install failed!"
 }

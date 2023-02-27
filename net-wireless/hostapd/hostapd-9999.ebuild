@@ -42,7 +42,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 PATCHES=("${FILESDIR}/${PN}-lar.patch")
-
+PROPERTIES+=" live"
 pkg_pretend() {
 	if use internal-tls; then
 		ewarn "internal-tls implementation is experimental and provides fewer features"
