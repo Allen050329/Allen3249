@@ -9,7 +9,7 @@ DESCRIPTION="Darling is a runtime environment for macOS applications."
 HOMEPAGE="https://darlinghq.org"
 SRC_URI="https://github.com/darlinghq/${PN}/releases/download/v${PV}/${PN}_${PV}.focal_amd64.deb -> ${P}.deb"
 
-S="${WORKDIR}"
+S="${WORKDIR}/usr"
 
 SLOT="0"
 KEYWORDS="~amd64"
@@ -17,6 +17,7 @@ KEYWORDS="~amd64"
 
 
 src_install() {
+	cd "${S}"
 	insinto /usr/
-	doins -r /usr/* || die "Install failed!"
+	doins -r bin lib libexec share || die "Install failed!"
 }
