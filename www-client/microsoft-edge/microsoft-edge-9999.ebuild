@@ -3,7 +3,8 @@
 
 EAPI="8"
 
-inherit chromium-2 desktop pax-utils unpacker xdg
+#inherit chromium-2 desktop pax-utils unpacker xdg
+inherit unpacker
 
 DESCRIPTION="The web browser from Microsoft"
 HOMEPAGE="https://www.microsoft.com/en-us/edge"
@@ -14,11 +15,11 @@ else
 	MY_PN=${PN}
 fi
 
-KEYWORDS="-* amd64"
+KEYWORDS=""
 
 MY_P="${MY_PN}_${PV}-1"
 
-SRC_URI="https://go.microsoft.com/fwlink?linkid=2149051&brand=M102 ->  ${PN}_amd64.deb"
+SRC_URI="https://go.microsoft.com/fwlink?linkid=2149051&brand=M102 -> ${PN}_amd64.deb"
 
 LICENSE="microsoft-edge"
 SLOT="0"
