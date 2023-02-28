@@ -58,7 +58,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-cpp/range-v3
-	=dev-cpp/ms-gsl-3*
+	dev-cpp/ms-gsl
 "
 BDEPEND="
 	${PYTHON_DEPS}
