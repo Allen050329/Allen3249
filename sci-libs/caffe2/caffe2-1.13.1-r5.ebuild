@@ -26,7 +26,6 @@ REQUIRED_USE="
 	tensorpipe? ( distributed )
 " # ?? ( cuda rocm )
 
-# CUDA 12 not supported yet: https://github.com/pytorch/pytorch/issues/91122
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-cpp/gflags:=
@@ -42,7 +41,7 @@ RDEPEND="
 	cuda? (
 		=dev-libs/cudnn-8*
 		dev-libs/cudnn-frontend:0/8
-		<=dev-util/nvidia-cuda-toolkit-12:=[profiler]
+		dev-util/nvidia-cuda-toolkit[profiler]
 	)
 	ffmpeg? ( media-video/ffmpeg:= )
 	mpi? ( sys-cluster/openmpi )
