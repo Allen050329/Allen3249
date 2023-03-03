@@ -20,7 +20,7 @@ RESTRICT="test"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="
 	${PYTHON_DEPS}
-	~sci-libs/caffe2-${PV}[${PYTHON_SINGLE_USEDEP}]
+	~sci-libs/caffe2[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/typing-extensions[${PYTHON_USEDEP}]')
 "
 DEPEND="${RDEPEND}
