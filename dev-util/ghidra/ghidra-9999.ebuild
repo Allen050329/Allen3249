@@ -3,11 +3,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit java-pkg-2 desktop
+inherit java-pkg-2 desktop git-r3
 
 DESCRIPTION="A software reverse engineering framework"
 HOMEPAGE="https://ghidra-sre.org/"
-inherit git-r3
 EGIT_REPO_URI="https://github.com/NationalSecurityAgency/ghidra.git"
 
 LICENSE="Apache-2.0"
