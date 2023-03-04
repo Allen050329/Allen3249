@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{9..11} )
 inherit python-single-r1 cmake cuda flag-o-matic git-r3
 
-MYPN=pytorch-uvm
+MYPN=caffe2
 MYP=${MYPN}-${PV}
 
 DESCRIPTION="A deep learning framework"
