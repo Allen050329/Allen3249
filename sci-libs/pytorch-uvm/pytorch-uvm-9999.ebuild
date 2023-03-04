@@ -25,16 +25,16 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	$(python_gen_cond_dep '	dev-python/pyyaml[${PYTHON_USEDEP}]')
 "
-S="${WORKDIR}/pytorch-uvm"
+S="${WORKDIR}/pytorch"
 
 src_prepare() {
+	git clone --recursive "${EGIT_REPO_URI}" "${S}"
 	filter-lto #bug 862672
 	cmake_src_prepare
 	pushd ${S}/csrc/jit/serialization || die
 	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
 	popd
 
-	git clone --recursive "${EGIT_REPO_URI}" "${S}"
 	cd "${S}"
 	eapply \
 		"${FILESDIR}"/0002-Don-t-build-libtorch-again-for-PyTorch-1.7.1.patch \
