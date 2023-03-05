@@ -56,7 +56,6 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	dev-libs/flatbuffers
 	dev-cpp/eigen
 	cuda? ( dev-libs/cutlass )
 	dev-libs/psimd
@@ -84,14 +83,14 @@ PATCHES=(
 src_prepare() {
 	filter-lto #bug 862672
 	cmake_src_prepare
-	pushd torch/csrc/jit/serialization || die
-	flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
-	popd
+	#pushd torch/csrc/jit/serialization || die
+	#flatc --cpp --gen-mutable --scoped-enums mobile_bytecode.fbs || die
+	#popd
 }
 
 src_configure() {
 	if use cuda && [[ -z ${TORCH_CUDA_ARCH_LIST} ]]; then
-		ewarn "WARNING: caffe2 is being built with its default CUDA compute capabilities: 3.5 and 7.0."
+		ewarn "WARNING: caffe2 is being built with its default CUDA compute capabilities: 7.5 and 8.6."
 		ewarn "These may not be optimal for your GPU."
 		ewarn ""
 		ewarn "To configure caffe2 with the CUDA compute capability that is optimal for your GPU,"
@@ -111,7 +110,7 @@ src_configure() {
 		-DUSE_CUDA=$(usex cuda)
 		-DUSE_CUDNN=$(usex cuda)
 		-DUSE_FAST_NVCC=$(usex cuda)
-		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.5 8.9}"
+		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.5 8.6}"
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
@@ -143,14 +142,7 @@ src_configure() {
 		-DPYBIND11_PYTHON_VERSION="${EPYTHON#python}"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DUSE_ITT=OFF
-		-DUSE_SYSTEM_EIGEN_INSTALL=ON
-		-DUSE_SYSTEM_PTHREADPOOL=ON
-		-DUSE_SYSTEM_FXDIV=ON
-		-DUSE_SYSTEM_FP16=ON
-		-DUSE_SYSTEM_GLOO=ON
-		-DUSE_SYSTEM_ONNX=ON
-		-DUSE_SYSTEM_SLEEF=ON
-		-DUSE_SYSTEM_FLATBUFFERS=ON
+		-DUSE_SYSTEM_LIBS=ON
 
 		-Wno-dev
 		-DTORCH_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
