@@ -56,6 +56,7 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	dev-libs/flatbuffers
 	dev-cpp/eigen
 	cuda? ( dev-libs/cutlass )
 	dev-libs/psimd
@@ -73,11 +74,11 @@ DEPEND="
 S="${WORKDIR}"/${MYP}
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.13.0-gentoo.patch
+#	"${FILESDIR}"/${PN}-1.13.0-gentoo.patch
 	"${FILESDIR}"/${PN}-1.13.0-install-dirs.patch
 	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
-	"${FILESDIR}"/${PN}-1.12.0-clang.patch
-	"${FILESDIR}"/${P}-tensorpipe.patch
+#	"${FILESDIR}"/${PN}-1.12.0-clang.patch
+	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
 )
 
 src_prepare() {
@@ -106,11 +107,11 @@ src_configure() {
 		-DBUILD_CUSTOM_PROTOBUF=OFF
 		-DBUILD_SHARED_LIBS=ON
 
-		-DUSE_CCACHE=OFF
+		-DUSE_CCACHE=ON
 		-DUSE_CUDA=$(usex cuda)
 		-DUSE_CUDNN=$(usex cuda)
 		-DUSE_FAST_NVCC=$(usex cuda)
-		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-3.5 7.0}"
+		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.5 8.9}"
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
@@ -149,6 +150,7 @@ src_configure() {
 		-DUSE_SYSTEM_GLOO=ON
 		-DUSE_SYSTEM_ONNX=ON
 		-DUSE_SYSTEM_SLEEF=ON
+		-DUSE_SYSTEM_FLATBUFFERS=ON
 
 		-Wno-dev
 		-DTORCH_INSTALL_LIB_DIR="${EPREFIX}"/usr/$(get_libdir)
