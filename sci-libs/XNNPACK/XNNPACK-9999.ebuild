@@ -6,7 +6,7 @@ inherit cmake git-r3
 
 DESCRIPTION="library of floating-point neural network inference operators"
 HOMEPAGE="https://github.com/google/XNNPACK/"
-EGIT_REPO_URI="https://github.com/google/XNNPACK.GIT"
+EGIT_REPO_URI="https://github.com/google/XNNPACK.git"
 
 LICENSE="MIT"
 SLOT="0"
