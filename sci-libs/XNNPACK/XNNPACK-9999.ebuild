@@ -61,10 +61,13 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DXNNPACK_BUILD_BENCHMARKS=ON
+		-DXNNPACK_BUILD_BENCHMARKS=OFF
+		-DCMAKE_C_FLAGS=-fPIC
+		-DCMAKE_CXX_FLAGS=-fPIC
+		-DBUILD_SHARED_LIBS=ON
+		-DXNNPACK_LIBRARY_TYPE=shared
 		-DXNNPACK_USE_SYSTEM_LIBS=ON
 		-DXNNPACK_BUILD_TESTS=$(usex test ON OFF)
-		-DXNNPACK_LIBRARY_TYPE=$(usex static-libs static shared)
 		-DXNNPACK_ENABLE_ASSEMBLY=$(usex assembly ON OFF)
 		-DXNNPACK_ENABLE_JIT=$(usex jit ON OFF)
 		-DXNNPACK_ENABLE_MEMOPT=$(usex memopt ON OFF)

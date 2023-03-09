@@ -1,7 +1,7 @@
 --- a/aten/src/ATen/native/cuda/Sort.cu
 +++ b/aten/src/ATen/native/cuda/Sort.cu
 @@ -1,3 +1,4 @@
-+CMAKE_CUDA_FLAGS += -G
++CMAKE_CUDA_FLAGS = "$(cuda_gccdir -f | tr -d \") -G"
  #define TORCH_ASSERT_NO_OPERATORS
  #include <ATen/native/cuda/Sort.h>
  #include <ATen/core/TensorBase.h>
