@@ -1,3 +1,4 @@
+
 # Copyright 2022-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
@@ -78,6 +79,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
 #	"${FILESDIR}"/${PN}-1.12.0-clang.patch
 	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
+	"${FILESDIR}"/${P}-fix-oom.patch
 )
 
 src_prepare() {
@@ -95,7 +97,7 @@ src_configure() {
 		ewarn ""
 		ewarn "To configure caffe2 with the CUDA compute capability that is optimal for your GPU,"
 		ewarn "set TORCH_CUDA_ARCH_LIST in your make.conf, and re-emerge caffe2."
-		ewarn "For example, to use CUDA capability 7.5 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5,3.5"
+		ewarn "For example, to use CUDA capability 7.0 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5,3.5"
 		ewarn "For a Maxwell model GPU, an example value would be: TORCH_CUDA_ARCH_LIST=Maxwell"
 		ewarn ""
 		ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
