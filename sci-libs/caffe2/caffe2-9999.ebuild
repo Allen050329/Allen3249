@@ -79,7 +79,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.12.0-glog-0.6.0.patch
 #	"${FILESDIR}"/${PN}-1.12.0-clang.patch
 	"${FILESDIR}"/${PN}-1.13.1-tensorpipe.patch
-	"${FILESDIR}"/${P}-fix-oom.patch
 )
 
 src_prepare() {
