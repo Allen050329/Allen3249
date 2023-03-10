@@ -203,7 +203,7 @@ src_install() {
 		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libssl.so* || die
 
 		# unbundle libz
-		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libz.so* || die
+		# rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libz.so* || die
 
 		# unbundle libpfm
 		rm "${ED}"/${cudadir}/${nsys_dir}/host-linux-x64/libpfm.so* || die
