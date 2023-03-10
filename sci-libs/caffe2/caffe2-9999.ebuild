@@ -4,7 +4,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_11 )
 inherit python-single-r1 cmake cuda flag-o-matic git-r3
 
 MYPN=caffe2
@@ -90,18 +90,18 @@ src_prepare() {
 }
 
 src_configure() {
-	if use cuda && [[ -z ${TORCH_CUDA_ARCH_LIST} ]]; then
-		ewarn "WARNING: caffe2 is being built with its default CUDA compute capabilities: 7.5 and 8.6."
-		ewarn "These may not be optimal for your GPU."
-		ewarn ""
-		ewarn "To configure caffe2 with the CUDA compute capability that is optimal for your GPU,"
-		ewarn "set TORCH_CUDA_ARCH_LIST in your make.conf, and re-emerge caffe2."
-		ewarn "For example, to use CUDA capability 7.0 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5,3.5"
-		ewarn "For a Maxwell model GPU, an example value would be: TORCH_CUDA_ARCH_LIST=Maxwell"
-		ewarn ""
-		ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
-		ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
-	fi
+#	if use cuda && [[ -z ${TORCH_CUDA_ARCH_LIST} ]]; then
+#		ewarn "WARNING: caffe2 is being built with its default CUDA compute capabilities: 7.5 and 8.6."
+#		ewarn "These may not be optimal for your GPU."
+#		ewarn ""
+#		ewarn "To configure caffe2 with the CUDA compute capability that is optimal for your GPU,"
+#		ewarn "set TORCH_CUDA_ARCH_LIST in your make.conf, and re-emerge caffe2."
+#		ewarn "For example, to use CUDA capability 7.0 & 3.5, add: TORCH_CUDA_ARCH_LIST=7.5,3.5"
+#		ewarn "For a Maxwell model GPU, an example value would be: TORCH_CUDA_ARCH_LIST=Maxwell"
+#		ewarn ""
+#		ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
+#		ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
+#	fi
 
 	local mycmakeargs=(
 		-DBUILD_CUSTOM_PROTOBUF=OFF
@@ -111,7 +111,7 @@ src_configure() {
 		-DUSE_CUDA=$(usex cuda)
 		-DUSE_CUDNN=$(usex cuda)
 		-DUSE_FAST_NVCC=$(usex cuda)
-		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.5 8.6}"
+#		-DTORCH_CUDA_ARCH_LIST="${TORCH_CUDA_ARCH_LIST:-7.5 8.9}"
 		-DUSE_DISTRIBUTED=$(usex distributed)
 		-DUSE_MPI=$(usex mpi)
 		-DUSE_FAKELOWP=OFF
