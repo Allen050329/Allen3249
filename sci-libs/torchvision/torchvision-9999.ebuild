@@ -44,8 +44,8 @@ src_prepare() {
 }
 
 src_compile() {
-	USE_SYSTEM_LIBS=ON \
-	CMAKE_BUILD_DIR="${BUILD_DIR}" \
+	USE_SYSTEM_LIBS=ON LDFLAGS="${LDFLAGS} -Wl,-Bsymbolic" \
+	CMAKE_BUILD_DIR="${BUILD_DIR}" FORCE_CUDA=ON \
 	BUILD_DIR= \
 	distutils-r1_src_compile
 }
