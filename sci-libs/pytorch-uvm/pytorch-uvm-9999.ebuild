@@ -30,12 +30,12 @@ S="${WORKDIR}/pytorch-uvm-9999"
 src_prepare() {
 	#git clone --recursive "${EGIT_REPO_URI}" "${S}"
 	cd "${S}"
-	eapply \
-		"${FILESDIR}"/0002-Don-t-build-libtorch-again-for-PyTorch-1.7.1.patch \
-		"${FILESDIR}"/pytorch-1.9.0-Change-library-directory-according-to-CMake-build.patch \
-		"${FILESDIR}"/pytorch-global-dlopen.patch \
-		"${FILESDIR}"/pytorch-1.7.1-torch_shm_manager.patch \
-		"${FILESDIR}"/pytorch-1.13.0-setup.patch \
+#	eapply \
+#		"${FILESDIR}"/0002-Don-t-build-libtorch-again-for-PyTorch-1.7.1.patch \
+#		"${FILESDIR}"/pytorch-1.9.0-Change-library-directory-according-to-CMake-build.patch \
+#		"${FILESDIR}"/pytorch-global-dlopen.patch \
+#		"${FILESDIR}"/pytorch-1.7.1-torch_shm_manager.patch \
+#		"${FILESDIR}"/pytorch-1.13.0-setup.patch \
 	# Set build dir for pytorch's setup
 	sed -i \
 		-e "/BUILD_DIR/s|build|/var/lib/caffe2/|" \
