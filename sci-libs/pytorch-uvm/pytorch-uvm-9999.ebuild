@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/pytorch-uvm-9999"
 
 src_prepare() {
-	#git clone --recursive "${EGIT_REPO_URI}" "${S}"
+	git clone --recursive "${EGIT_REPO_URI}" "${S}"
 	cd "${S}"
 #	eapply \
 #		"${FILESDIR}"/0002-Don-t-build-libtorch-again-for-PyTorch-1.7.1.patch \
