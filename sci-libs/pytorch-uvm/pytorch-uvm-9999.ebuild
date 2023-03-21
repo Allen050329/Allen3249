@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/pytorch-uvm-9999"
 
 src_prepare() {
-	git clone --recursive "${EGIT_REPO_URI}" "${S}"
+#	git clone --recursive "${EGIT_REPO_URI}" "${S}"
 	cd "${S}"
 #	eapply \
 #		"${FILESDIR}"/0002-Don-t-build-libtorch-again-for-PyTorch-1.7.1.patch \
@@ -45,8 +45,9 @@ src_prepare() {
 }
 
 src_compile() {
+	cd "${S}"
 	PYTORCH_BUILD_NUMBER=0 \
-	USE_SYSTEM_LIBS=ON USE_MKLDNN=OFF USE_NNPACK=OFF BUILD_CAFFE2=ON CUDA_NVCC_EXECUTABLE=$(which nvcc) \
+	USE_SYSTEM_LIBS=ON USE_MKLDNN=OFF USE_NNPACK=OFF BUILD_CAFFE2=OFF CUDA_NVCC_EXECUTABLE=$(which nvcc) \
 	USE_FAST_NVCC=ON BUILD_SHARED_LIBS=ON USE_CCACHE=ON USE_CUDA=ON USE_FFMPEG=ON USE_GFLAGS=ON USE_XNNPACK=ON \
 	USE_SYSTEM_XNNPACK=ON USE_TENSORPIPE=ON USE_NUMPY=ON USE_OPENCV=ON USE_SYSTEM_CPUINFO=ON \
 	CMAKE_BUILD_DIR="${BUILD_DIR}" CFLAGS="$CFLAGS -fPIC -Wno-error=maybe-uninitialized -fPIC -Wno-nonnull -w" \
