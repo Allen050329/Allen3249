@@ -9,7 +9,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1 systemd
 
 DESCRIPTION="Management utility to handle GPU switching for Optimus laptops"
-HOMEPAGE="https://github.com/Askannz/optimus-manager"
+HOMEPAGE="https://github.com/Allen050329/optimus-manager"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
